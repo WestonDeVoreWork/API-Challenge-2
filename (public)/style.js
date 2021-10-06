@@ -1,28 +1,47 @@
-let baseURL = "http://api.coinlayer.com/api/live?access_key=0c584ba0d58b23629adf0c1285b4b305";
-let apiKey = "0c584ba0d58b23629adf0c1285b4b305";
+let apiKey = "6e8fafc70aed6fa377e61b09";
 
 
-const searchTerm = document.querySelector("#searchForm")
+const baseCurrency = document.querySelector("#baseCurrency");
+const targetCurrency = document.querySelector("#targetCurrency");
+
+let baseURL = `https://v6.exchangerate-api.com/v6/${apiKey}/`;
+
+
+
+const searchTerm = document.querySelector("#baseCurrency")
 const button = document.getElementById("submit");
 
-button.addEventListener('click', CallFetch);
+button.addEventListener('click', fetchSearchResults);
 
-async function CallFetch(e) {
+function fetchSearchResults() {
+    console.log(baseCurrency.value);
+    console.log(targetCurrency.value)
+    const baseCurrencyValue = baseCurrency.value;
+    const targetCurrencyValue = targetCurrency.value;
+    console.log(baseCurrencyValue);
+    console.log(targetCurrencyValue);
+    url = baseURL;
+    
 
-     console.log(searchTerm.value);
-    const response =  await fetch(baseURL);
-        const json =  await response;
-                
-        console.log(json);
-        callSearch(json);
-};
+fetch('https://v6.exchangerate-api.com/v6/6e8fafc70aed6fa377e61b09/latest/USD', {
+    mode: 'no-cors'
+})
+        .then(function(result) {
+            console.log(result.json());
+            return(result.json);
+        }) .then(function(json) {
+            console.log(json)
+            displayResults(json)
+            // console.log(json.[baseCurrencyValue])
+        })
+        
+}
 
 let callSearch = data => {
-    const searchTermData = (data.searchTerm);
-    console.log(searchTermData);
-    document.getElementById("EtheriumDisplay").innerHTML = searchTermData;
+
 };
 
-function displayResults() {
-    
+let displayResults = data => {
+    const searchTermData = (data)
+    document.getElementById("resultDisplay").innerHTML = `${searchTermData}`;
 }
