@@ -17,14 +17,18 @@ function fetchSearchResults() {
     const targetCurrencyValue = targetCurrency.value;
     console.log(baseCurrencyValue);
     console.log(targetCurrencyValue);
-    url = baseURL + "latest/USD"; // replace USD to ${baseCurrencyValue}
-    
+    url = baseURL + "pair/" + baseCurrencyValue + '/' + targetCurrencyValue; // replace USD to ${baseCurrencyValue}
 
-fetch(url)
-        .then(res => res.json)
+
+    fetch(url)
+        //     , 
+        //     {
+        //     mode: "no-cors"
+        // })
+        .then(res => res.json())
         .then(data => displayResults(data))
         .catch(err => console.log(err))
-            // console.log(json.[baseCurrencyValue])
+    // console.log(json.[baseCurrencyValue])
 }
 
 
@@ -44,10 +48,13 @@ let callSearch = data => {
 };
 
 let displayResults = data => {
-    const searchTermData = (data)
-    console.log(searchTermData)
-    const searchTermDataString = JSON.toString(searchTermData)
-    // console.log(JSON.stringify(searchTermData))
-    console.log(searchTermDataString)
-    document.getElementById("resultDisplay").innerHTML = `${searchTermData}`;
+    console.log(data);
+    const searchTermData = (data);
+    console.log(searchTermData);
+    targetCurrencyValue = targetCurrency.value;
+    console.log(targetCurrencyValue)
+    const converstionRate = (searchTermData.conversion_rates.targetCurrencyValue); //const converstionRate = (searchTermData.conversion_rates.USD);
+    console.log(converstionRate);
+    const jsonConverstionRate = JSON.stringify(converstionRate);
+    document.getElementById("resultDisplay").innerHTML = `${jsonConverstionRate}`;
 }
