@@ -42,18 +42,13 @@ async function fetchFetchData() {
 }
 }*/
 
-
-let callSearch = data => {
-
-};
-
 let displayResults = data => {
     console.log(data);
     const searchTermData = (data);
     console.log(searchTermData);
     targetCurrencyValue = targetCurrency.value;
     console.log(targetCurrencyValue)
-    const converstionRate = (searchTermData.conversion_rates.targetCurrencyValue); //const converstionRate = (searchTermData.conversion_rates.USD);
+    const converstionRate = (searchTermData.conversion_rate); //const converstionRate = (searchTermData.conversion_rates.USD);
     console.log(converstionRate);
     const jsonConverstionRate = JSON.stringify(converstionRate);
     document.getElementById("resultDisplay").innerHTML = `${jsonConverstionRate}`;

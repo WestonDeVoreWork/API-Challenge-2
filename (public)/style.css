@@ -1,11 +1,16 @@
 .API2WHOLEPAGE {
     background-color: darkcyan;
+    height: 1280px;
 }
 
 .TITLE {
     background-color: lightslategray;
     width: 100%;
     text-align:center;
+}
+
+#results {
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .formBox {
@@ -20,4 +25,13 @@
 
 .API2UnderTitle {
     background-color: lightblue;
+}
+
+.API2UnderTitle a {
+    text-decoration: none;
+    color: black;
+}
+.API2UnderTitle a:hover {
+    color: red;
+    /* text-decoration: underline; */
 }
